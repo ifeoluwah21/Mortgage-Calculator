@@ -1,12 +1,16 @@
 import React from 'react';
 import style from './Layout.module.scss';
+import Calculator from '../Calculator/Calculator';
 
 const Layout = () => {
 	return (
 		<main>
 			<section>
-				<h1>Mortgage Calculator</h1>
-				<button>Clear All</button>
+				<header className={style['header']}>
+					<h1 className={style['header__title']}>Mortgage Calculator</h1>
+					<button className={style['header__btn']}>Clear All</button>
+				</header>
+				<Calculator />
 			</section>
 		</main>
 	);
