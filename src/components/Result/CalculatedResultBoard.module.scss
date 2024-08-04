@@ -1,0 +1,39 @@
+@import "../../sass/base/variables";
+
+.result {
+  background-color: $slate-900;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 7px;
+  border-top: 4px solid $lime;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.75rem;
+
+  &__month-title,
+  &__term-title {
+    color: $slate-300;
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 0.5rem;
+  }
+
+  // &__month-title {
+  //   padding-bottom: 1rem;
+  // }
+
+  &__month-amount {
+    color: $lime;
+    font-size: 3rem;
+    font-weight: 800;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid $slate-500;
+  }
+
+  &__term-amount {
+    color: $white;
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+}
