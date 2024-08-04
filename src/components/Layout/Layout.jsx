@@ -9,7 +9,12 @@ const Layout = () => {
 			<section>
 				<header className={style['header']}>
 					<h1 className={style['header__title']}>Mortgage Calculator</h1>
-					<button className={style['header__btn']}>Clear All</button>
+					<button
+						type="button"
+						onClick={() => console.log('Clear')}
+						className={style['header__btn']}>
+						Clear All
+					</button>
 				</header>
 				<Calculator />
 				<CalculatedResult />

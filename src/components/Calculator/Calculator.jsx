@@ -1,20 +1,46 @@
-import React from 'react';
-import { Field, Formik } from 'formik';
+import React, { useRef } from 'react';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import CalculatorIcon from '../Layout/CalculatorIcon';
 
 import style from './Calculator.module.scss';
+import { number, object, string } from 'yup';
+
+const calculateSchema = object().shape({
+	amount: number()
+		.min(0, 'The Mortgage amount should be greater than 0!!!')
+		.required('Kindly enter the Mortgage amount!!!'),
+	term: number()
+		.positive('Term can not be a negative number!!!')
+		.required('Kindly enter the Mortgage years!!!'),
+	rate: number()
+		.positive('The interest should be a positive value!!!')
+		.required('Kindly enter the interest rate!!!'),
+	picked: string()
+		.oneOf(['Interest Only', 'Repayment'])
+		.required('Kindly pick a Mortgage type!!!'),
+});
 
 const Calculator = () => {
 	return (
 		<Formik
+			validationSchema={calculateSchema}
 			initialValues={{
-				amount: undefined,
-				term: undefined,
-				rate: undefined,
+				amount: '',
+				term: '',
+				rate: '',
 				picked: '',
+			}}
+			onSubmit={(values, formik) => {
+				console.log(values);
+				// formik.resetForm({
+				// 	amount: '',
+				// 	rate: '',
+				// 	term: '',
+				// 	picked: '',
+				// });
 			}}>
 			{(formik) => (
-				<form className={style.form}>
+				<Form className={style.form}>
 					<div className={style['form__input-pry-container']}>
 						<label
 							htmlFor="amount"
@@ -33,6 +59,11 @@ const Calculator = () => {
 								className={`${style['form__input']} ${style['form__input--left']}`}
 							/>
 						</div>
+						<ErrorMessage
+							name="amount"
+							component={'p'}
+							className={style['form__input-error']}
+						/>
 					</div>
 					<div className={style['form__input-pry-container']}>
 						<label
@@ -52,6 +83,11 @@ const Calculator = () => {
 								className={`${style['form__input']} ${style['form__input--right']}`}
 							/>
 						</div>
+						<ErrorMessage
+							name="term"
+							component={'p'}
+							className={style['form__input-error']}
+						/>
 					</div>
 					<div className={style['form__input-pry-container']}>
 						<label
@@ -71,6 +107,11 @@ const Calculator = () => {
 								className={`${style['form__input']} ${style['form__input--right']}`}
 							/>
 						</div>
+						<ErrorMessage
+							name="rate"
+							component={'p'}
+							className={style['form__input-error']}
+						/>
 					</div>
 					<div
 						className={`${style['form__input-pry-container']} ${style['form__input-pry-container--flex']}`}>
@@ -101,6 +142,11 @@ const Calculator = () => {
 								Interest Only
 							</span>
 						</label>
+						<ErrorMessage
+							name="picked"
+							component={'p'}
+							className={style['form__input-radio-error']}
+						/>
 					</div>
 					<button
 						type="submit"
@@ -112,7 +158,7 @@ const Calculator = () => {
 							Calculate Repayments
 						</span>
 					</button>
-				</form>
+				</Form>
 			)}
 		</Formik>
 	);

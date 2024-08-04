@@ -3,6 +3,7 @@
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   width: calc(100% - 3rem);
   margin: 0 auto;
   // background-color: $white;
@@ -25,7 +26,6 @@
 
   &__input-pry-container {
     grid-column: 1 / 3;
-    margin: 1rem 0;
 
     &--flex {
       display: flex;
@@ -54,6 +54,13 @@
     font-weight: 800;
     border: 1px solid;
     border-radius: 4px;
+
+    &-error,
+    &-radio-error {
+      color: $red;
+      font-size: 12px;
+      padding: 0.25rem 0;
+    }
 
     &-radio {
       border: 1px solid;
