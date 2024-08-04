@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Layout.module.scss';
 import Calculator from '../Calculator/Calculator';
+import CalculatedResult from '../Result/CalculatedResult';
 
 const Layout = () => {
 	return (
@@ -11,6 +12,7 @@ const Layout = () => {
 					<button className={style['header__btn']}>Clear All</button>
 				</header>
 				<Calculator />
+				<CalculatedResult />
 			</section>
 		</main>
 	);
