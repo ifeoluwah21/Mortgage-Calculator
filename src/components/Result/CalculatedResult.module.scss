@@ -1,0 +1,28 @@
+@import "../../sass/base/variables";
+
+.result {
+  background-color: $slate-800;
+
+  &__wrapper {
+    width: calc(100% - 3rem);
+    margin: 0 auto;
+    padding: 2.5rem 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  &__title {
+    color: $white;
+    text-align: left;
+    font-weight: 800;
+  }
+
+  &__content {
+    color: $slate-300;
+    text-align: left;
+    font-weight: 500;
+  }
+}
