@@ -2,8 +2,11 @@ import React from 'react';
 
 import style from './CalculatedResult.module.scss';
 import CalculatedResultBoard from './CalculatedResultBoard';
+import { useSelector } from 'react-redux';
+import { getRepayments } from '../Calculator/calculateSlice';
 
 const CalculatedResult = () => {
+	const { monthlyRepayment, totalRepayment } = useSelector(getRepayments);
 	return (
 		<section className={style['result']}>
 			<div className={style['result__wrapper']}>
@@ -14,8 +17,8 @@ const CalculatedResult = () => {
 					again.
 				</p>
 				<CalculatedResultBoard
-					monthlyAmount={1797.74}
-					termAmount={539322.94}
+					monthlyAmount={monthlyRepayment.toFixed(2).toLocaleString()}
+					termAmount={totalRepayment.toFixed(2).toLocaleString()}
 				/>
 			</div>
 		</section>
