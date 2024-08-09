@@ -1,9 +1,21 @@
 import React from 'react';
 import style from './Layout.module.scss';
-import Calculator from '../Calculator/Calculator';
 import CalculatedResult from '../Result/CalculatedResult';
+import Calculator from '../Calculator/Calculator';
+import { useSelector } from 'react-redux';
+import { getRepayments } from '../Calculator/calculateSlice';
+import Result from '../Result/Result';
 
 const Layout = () => {
+	const { monthlyRepayment, totalRepayment } = useSelector(getRepayments);
+	let content;
+
+	if (monthlyRepayment && totalRepayment) {
+		content = <CalculatedResult />;
+	} else {
+		content = <Result />;
+	}
+
 	return (
 		<main>
 			<section>
@@ -17,7 +29,7 @@ const Layout = () => {
 					</button>
 				</header>
 				<Calculator />
-				<CalculatedResult />
+				{content}
 			</section>
 		</main>
 	);
