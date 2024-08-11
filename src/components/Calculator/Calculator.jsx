@@ -54,6 +54,8 @@ const Calculator = () => {
 				// });
 			}}>
 			{(formik) => {
+				console.log(formik);
+				const { errors, touched } = formik;
 				return (
 					<Form className={style.form}>
 						<div className={style['form__input-pry-container']}>
@@ -62,16 +64,33 @@ const Calculator = () => {
 								className={style['form__label']}>
 								<p className={style['form__label-title']}>Mortgage Amount</p>
 							</label>
-							<div className={style['form__input-sec-container']}>
+							<div
+								className={`${style['form__input-sec-container']} ${
+									errors.amount && touched.amount
+										? `${style['form__input-sec-container--error']}`
+										: ''
+								}`}>
 								<span
-									className={`${style['form__input-unit']} ${style['form__input-unit--left']}`}>
+									className={`${style['form__input-unit']} ${
+										style['form__input-unit--left']
+									} ${
+										errors.amount && touched.amount
+											? `${style['form__input-unit--error']}`
+											: ''
+									}`}>
 									&#163;
 								</span>
 								<Field
 									name="amount"
 									id="amount"
 									type="number"
-									className={`${style['form__input']} ${style['form__input--left']}`}
+									className={`${style['form__input']} ${
+										style['form__input--left']
+									} ${
+										errors.amount && touched.amount
+											? `${style['form__input--error']}`
+											: ''
+									}`}
 								/>
 							</div>
 							<ErrorMessage
@@ -86,16 +105,33 @@ const Calculator = () => {
 								className={style['form__label']}>
 								<p className={style['form__label-title']}>Mortgage Term</p>
 							</label>
-							<div className={style['form__input-sec-container']}>
+							<div
+								className={`${style['form__input-sec-container']} ${
+									errors.term && touched.term
+										? `${style['form__input-sec-container--error']}`
+										: ''
+								}`}>
 								<span
-									className={`${style['form__input-unit']} ${style['form__input-unit--right']}`}>
+									className={`${style['form__input-unit']} ${
+										style['form__input-unit--right']
+									} ${
+										errors.term && touched.term
+											? `${style['form__input-unit--error']}`
+											: ''
+									}`}>
 									years
 								</span>
 								<Field
 									name="term"
 									id="term"
 									type="number"
-									className={`${style['form__input']} ${style['form__input--right']}`}
+									className={`${style['form__input']} ${
+										style['form__input--right']
+									} ${
+										errors.term && touched.term
+											? `${style['form__input--error']}`
+											: ''
+									} `}
 								/>
 							</div>
 							<ErrorMessage
@@ -110,16 +146,33 @@ const Calculator = () => {
 								className={style['form__label']}>
 								<p className={style['form__label-title']}>Interest Rate</p>
 							</label>
-							<div className={style['form__input-sec-container']}>
+							<div
+								className={`${style['form__input-sec-container']} ${
+									errors.rate && touched.rate
+										? `${style['form__input-sec-container--error']}`
+										: ``
+								}`}>
 								<span
-									className={`${style['form__input-unit']} ${style['form__input-unit--right']}`}>
+									className={`${style['form__input-unit']} ${
+										style['form__input-unit--right']
+									} ${
+										errors.rate && touched.rate
+											? `${style['form__input-unit--error']}`
+											: ``
+									}`}>
 									%
 								</span>
 								<Field
 									name="rate"
 									id="rate"
 									type="number"
-									className={`${style['form__input']} ${style['form__input--right']}`}
+									className={`${style['form__input']} ${
+										style['form__input--right']
+									} ${
+										errors.rate && touched.rate
+											? `${style['form__input--error']}`
+											: ``
+									}`}
 								/>
 							</div>
 							<ErrorMessage
