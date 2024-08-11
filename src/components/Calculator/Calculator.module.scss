@@ -66,6 +66,14 @@
       border: 1px solid;
       border-radius: 3px;
       padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      transition: all 200ms ease;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(215, 218, 47, 0.15);
+        border-color: $lime;
+      }
 
       &-title {
         margin-left: 1rem;
@@ -81,6 +89,11 @@
       padding-left: 1rem;
     }
 
+    &--error {
+      border-color: $red;
+      transition: all 200ms ease;
+    }
+
 
     &-unit {
       position: absolute;
@@ -94,6 +107,13 @@
       transform: translateY(-50%);
       height: calc(100% - 2px);
       background-color: $slate-100;
+      transition: all 200ms ease;
+      pointer-events: none;
+
+      &--error {
+        background-color: $red;
+        color: $white;
+      }
 
       &--left {
         left: 1px;
@@ -108,6 +128,19 @@
 
     &-sec-container {
       position: relative;
+
+      &:hover,
+      &:focus {
+        & .form__input-unit {
+          background-color: $lime;
+        }
+
+        & .form__input {
+          border-color: $lime;
+        }
+      }
+
+      &--error {}
     }
   }
 }
